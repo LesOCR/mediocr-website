@@ -1,0 +1,244 @@
+body {
+	background-color: rgb(255, 255, 255);
+	font: 300 0.938em/1.48 'Merriweather Sans';
+	color: rgb(40, 40, 40);
+}
+
+.about {
+	margin-left: 135px;
+}
+
+.contents {
+	width: 39.1666666666%;
+	min-height: 400px;
+	margin: 35px auto 0;
+	font-size: 1em;
+	text-indent: 12px;
+	color: rgb(40, 40, 40);
+}
+
+.contents p {
+	margin-bottom: 1em;
+}
+
+.selected {
+	text-decoration: underline;
+}
+
+.logo {
+	display: block;
+	position: absolute;
+	top: 30px;
+	left: 0;
+	right: 0;
+	z-index: 6;
+	width: 128px;
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.logo_highlight {
+	display: block;
+	position: absolute;
+	top: 30px;
+	left: 0;
+	right: 0;
+	z-index: 7;
+	width: 128px;
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.menu-element {
+	display: block;
+	float: left;
+	font: 1.2em/1.38 Merriweather;
+	text-align: center;
+	color: rgb(144, 144, 144);
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
+}
+
+.menu-element:hover {
+	color: rgb(97, 39, 191);
+}
+
+.menubar {
+	width: 400px;
+	height: 24px;
+	margin: 185px auto 0;
+}
+
+.try {
+	margin-left: 136px;
+}
+
+.try:hover {
+	text-decoration: none;
+}
+
+._text {
+	width: 100%;
+	min-height: 13px;
+	margin: 50px auto 0;
+	padding-bottom: 40px;
+	font: 0.933em/1.38 Merriweather;
+	text-align: center;
+	color: rgb(144, 144, 144);
+}
+
+.contents a {
+	text-decoration: underline;
+	color: rgb(65, 65, 65);
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
+}
+
+.contents a:hover {
+	color: rgb(144, 144, 144);
+}
+
+.contents em {
+	font-style: italic;
+}
+
+.contents strong {
+	font-style: inherit;
+	font-weight: 700;
+	text-transform: inherit;
+}
+
+@media(max-width: 1000px) {
+	.contents {
+		width: 52.7984374999%;
+	}
+
+	.logo,.logo_highlight {
+		left: 0;
+		right: 0;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.menubar {
+		width: 402px;
+		margin-top: 188px;
+	}
+
+	.menubar .about {
+		margin-left: 134px;
+	}
+
+	.menubar .try {
+		margin-left: 138px;
+	}
+
+	._text {
+		margin-top: 25px;
+	}
+}
+
+@media(max-width: 800px) {
+	body {
+		font-size: 0.938em;
+	}
+
+	.contents {
+		width: 68%;
+	}
+
+	.logo,.logo_highlight {
+		left: 0;
+		right: 0;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.menubar .about {
+		margin-left: 137px;
+	}
+
+	.menubar .try {
+		margin-left: 136px;
+	}
+}
+
+@media(max-width: 600px) {
+	.contents {
+		width: 70%;
+	}
+
+	.logo,.logo_highlight {
+		left: 0;
+		right: 0;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.menubar {
+		width: 268px;
+	}
+
+	.menubar .about {
+		margin-left: 68px;
+	}
+
+	.menubar .try {
+		margin-left: 70px;
+	}
+
+	._text {
+		margin-top: 50px;
+	}
+}
+
+@media(max-width: 350px) {
+	body {
+		font-size: 0.938em;
+	}
+
+	.contents {
+		width: 85%;
+	}
+
+	.logo,.logo_highlight {
+		left: 0;
+		right: 0;
+		height: auto;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.menubar {
+		width: 184px;
+	}
+
+	.menubar .about {
+		margin-left: 27px;
+	}
+
+	.menubar .try {
+		margin-left: 28px;
+	}
+}
+
+#instantclick-bar {
+	background: rgba(97, 39, 191, 255);
+}
+
+h1 {
+	text-indent: 0px;
+	font-size: 1.4em;
+	margin-bottom: 1em;
+}
