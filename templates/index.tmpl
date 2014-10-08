@@ -7,10 +7,12 @@
   <link href="//fonts.googleapis.com/css?family=Merriweather:300,inherit|Merriweather+Sans:300,inherit,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/standardize.css">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/logo-animate.css">
 </head>
 <body class="body index clearfix">
-  <img class="logo_highlight js-logo_highlight" src="images/mediocr_highlight.png">
-  <img class="logo" src="images/mediocr_off.png">
+  <div class="logo-container">
+        <img class="logo-image" src="images/mediocr_off.png" alt="MediOCR logo">
+  </div>
   <div class="menubar clearfix">
     <a class="menu-element home{{ if eq .title "Home" }} selected{{end}}" href="/">home</a>
     <a href="try" class="menu-element try{{ if eq .title "Try" }} selected{{end}}">try</a>
