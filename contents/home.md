@@ -1,4 +1,4 @@
-MediOCR is our final project for the semester. It is an OCR software fully capable of recognising handwritten text. [Our team](/about), composed of 4 members, is programming it in C. We are all from the 2018 international class at [Epita](http://www.epita.fr/).
+MediOCR is our final project for the semester. It is an OCR software fully capable of recognising handwritten text. [Our team](/about), composed of 5 members, is programming it in C. We are all from the 2018 international class at [Epita](http://www.epita.fr/).
 
 The first milestone for our project is on the 20th October, and the final milestone is planed for the 8th December of this year. We will be presenting the project and its progress in front of a jury each time.
 
