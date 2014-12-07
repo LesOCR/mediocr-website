@@ -92,11 +92,13 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Printf("Running the OCR...\n")
 	cmd := exec.Command("./main", "-f", "../"+tmpName)
 	cmd.Dir = "mediocr"
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	err = cmd.Run()
+	fmt.Printf("Result: %s\n", out.String())
 	if err != nil {
 		fmt.Printf("OCR error: %s\n", err.Error())
 		redirectErrorDesc(w, r, http.StatusInternalServerError, "The "+
