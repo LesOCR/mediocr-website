@@ -19,6 +19,7 @@ const (
 )
 
 func main() {
+	// Allow users only from mediocr.io, and a few more security tricks
 	secureMiddleware := secure.New(secure.Options{
 		AllowedHosts:       []string{"mediocr.io"},
 		STSSeconds:         315360000,
@@ -27,10 +28,17 @@ func main() {
 		BrowserXssFilter:   true,
 		IsDevelopment:      devMode,
 	})
+	// Session cookie store
 	store := sessions.NewCookieStore(
 		[]byte(os.Getenv("SESSION_AUTHENTICATION_KEY")),
 		[]byte(os.Getenv("SESSION_ENCRYPTION_KEY")),
 	)
+	store.Options(sessions.Options{
+		Path:     "/",
+		Domain:   "mediocr.io",
+		Secure:   true,
+		HTTPOnly: true,
+	})
 
 	// Gorilla router, render package, negroni middlewares (including the
 	// magical security middleware and the session store)
