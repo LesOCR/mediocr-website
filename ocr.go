@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"syscall"
+	"time"
 
 	"code.google.com/p/go-uuid/uuid"
 	"code.google.com/p/go.image/bmp"
@@ -97,10 +99,20 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	cmd.Dir = "mediocr"
 	var out bytes.Buffer
 	cmd.Stdout = &out
+
+	go controlExecutionTime(cmd)
 	err = cmd.Run()
-	fmt.Printf("Result: %s\n", out.String())
-	if err != nil {
-		fmt.Printf("OCR error: %s\n", err.Error())
+	if err == nil {
+		fmt.Printf("Result: %s\n", out.String())
+
+	} else if err.Error() == "signal: killed" {
+		fmt.Errorf("Killed an OCR process running for too long\n")
+		redirectErrorDesc(w, r, http.StatusGatewayTimeout, "We couldn't "+
+			"process your image fast enough and had to kill the process.")
+		return
+
+	} else {
+		fmt.Errorf("OCR error: %s\n", err.Error())
 		redirectErrorDesc(w, r, http.StatusInternalServerError, "The "+
 			"underlaying OCR software has returned an inexpected result.")
 		return
@@ -109,6 +121,24 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	getSession(r).AddFlash(out.String(), "ocr_result")
 	saveSession(w, r)
 	http.Redirect(w, r, "/try", http.StatusSeeOther)
+}
+
+func controlExecutionTime(cmd *exec.Cmd) {
+	startTime := time.Now()
+	for {
+		if err := cmd.Process.Signal(syscall.Signal(0)); err != nil {
+			return
+		}
+		if time.Now().Sub(startTime) > ocrMaxExecutionTime*time.Second {
+			err := cmd.Process.Kill()
+			if err != nil {
+				fmt.Errorf("Error while killing a long-running process: %s\n",
+					err.Error())
+			}
+			return
+		}
+		time.Sleep(time.Millisecond * 200)
+	}
 }
 
 func removeTmpFile(file string) {
