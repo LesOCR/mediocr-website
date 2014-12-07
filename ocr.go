@@ -90,6 +90,9 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// TODO: run the OCR
+	redirectErrorDesc(w, r, http.StatusNotImplemented, "The OCR feature has "+
+		"yet to be finished. Come back soon, it should be ready by the 8th "+
+		"december!")
 }
 
 func removeTmpFile(file string) {
