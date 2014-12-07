@@ -4,4 +4,4 @@ The first milestone for our project was on the 20th October 2015. We presented a
 
 If you are a hacker and want to toy with our project, you can by following the ”try” link above. Be careful though, it might be in a poor state and/or require some careful tuning.
 
-The software in itself is based on a simulation of a neural network that is trained to recognise printed characters individually. Images are optimised, split by a custom-designed algorithm into atomic parts (single letters) and then processed by the neural network.
+The software in itself is based on a simulation of a neural network that is trained to recognise printed characters individually. Images are optimised for legibility, split by a custom-designed algorithm into atomic parts (single letters) and then processed by the neural network.

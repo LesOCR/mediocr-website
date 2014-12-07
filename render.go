@@ -9,20 +9,17 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/GoIncremental/negroni-sessions"
 	"github.com/russross/blackfriday"
-	"gopkg.in/unrolled/render.v1"
 )
 
 // renderPage renders a given page by parsing Markdown for content
-func renderPage(w http.ResponseWriter, r *http.Request, page string,
-	rn *render.Render) {
+func renderPage(w http.ResponseWriter, r *http.Request, page string) {
 	// Status code from flash cookies
 	statusCode := http.StatusOK
 	if page == "error" {
 		statusCode = http.StatusInternalServerError
 	}
-	if fl := sessions.GetSession(r).Flashes("error_code"); len(fl) > 0 {
+	if fl := getSession(r).Flashes("error_code"); len(fl) > 0 {
 		statusCode = fl[0].(int)
 	}
 
@@ -54,7 +51,7 @@ func renderPage(w http.ResponseWriter, r *http.Request, page string,
 		-1,
 	)
 	errorDescription := "That’s an error!"
-	if fl := sessions.GetSession(r).Flashes("error_description"); len(fl) > 0 {
+	if fl := getSession(r).Flashes("error_description"); len(fl) > 0 {
 		errorDescription = fl[0].(string)
 	}
 	pageContents = strings.Replace(pageContents, "{{.HTTP_ERROR_DESCRIPTION}}",
@@ -67,7 +64,9 @@ func renderPage(w http.ResponseWriter, r *http.Request, page string,
 		blackfriday.EXTENSION_LAX_HTML_BLOCKS,
 	))
 
-	rn.HTML(w, statusCode, "index", map[string]interface{}{
+	saveSession(w, r)
+
+	getRender(w, r).HTML(w, statusCode, "index", map[string]interface{}{
 		"host":     r.Host,
 		"title":    string(displayedName),
 		"contents": template.HTML(pageContents),
