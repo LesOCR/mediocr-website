@@ -15,8 +15,8 @@ const (
 	contentsPath = "./contents"
 	devMode      = false
 
-	ocrMaxFileSize      = 512 * 1024 // 512 KiB
-	ocrMaxExecutionTime = 42         // seconds
+	ocrMaxFileSize      = 2 * 1024 * 1024 // 512 KiB
+	ocrMaxExecutionTime = 42              // seconds
 )
 
 func main() {
