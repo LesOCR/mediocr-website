@@ -13,7 +13,7 @@ import (
 
 const (
 	contentsPath = "./contents"
-	devMode      = true
+	devMode      = false
 
 	ocrMaxFileSize = 512 * 1024 // 512 KiB
 )
