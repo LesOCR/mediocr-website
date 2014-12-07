@@ -125,12 +125,16 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 
 func controlExecutionTime(cmd *exec.Cmd) {
 	startTime := time.Now()
+	process := cmd.Process
 	for {
-		if err := cmd.Process.Signal(syscall.Signal(0)); err != nil {
+		if process == nil {
+			return
+		}
+		if err := process.Signal(syscall.Signal(0)); err != nil {
 			return
 		}
 		if time.Now().Sub(startTime) > ocrMaxExecutionTime*time.Second {
-			err := cmd.Process.Kill()
+			err := process.Kill()
 			if err != nil {
 				fmt.Errorf("Error while killing a long-running process: %s\n",
 					err.Error())
