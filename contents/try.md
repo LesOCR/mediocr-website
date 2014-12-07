@@ -4,5 +4,5 @@ However, you can upload a file here and we will do our best to parse it, so you 
 
 <form method="POST" enctype="multipart/form-data">
 	<input type="file" name="file" />
-	<input type="submit" value="Submit" />
+	<a href="#" onclick="document.forms[0].submit()">Submit</a>
 </form>
