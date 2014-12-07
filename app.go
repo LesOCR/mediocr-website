@@ -34,9 +34,9 @@ func main() {
 		[]byte(os.Getenv("SESSION_ENCRYPTION_KEY")),
 	)
 	store.Options = &sessions.Options{
-		Path: "/",
-		//Secure:   true,
-		HttpOnly: true,
+	//Path: "/",
+	//Secure:   true,
+	//HttpOnly: true,
 	}
 
 	// Gorilla router, render package, negroni middlewares (including the
