@@ -45,10 +45,9 @@ func main() {
 	r := mux.NewRouter()
 	rn := render.New(render.Options{IsDevelopment: devMode})
 	n := negroni.New(negroni.NewRecovery(), negroni.NewLogger())
+	n.Use(sessions.Sessions("session", store))
 	n.Use(negroni.HandlerFunc(secureMiddleware.HandlerFuncWithNext))
 	n.Use(negroni.NewStatic(http.Dir("public")))
-
-	n.Use(sessions.Sessions("session", store))
 
 	r.HandleFunc("/", homeHandler(rn))
 	r.HandleFunc("/try", uploadHandler).Methods("POST")
