@@ -1,34 +1,78 @@
 {
 	"ImportPath": "github.com/LesOCR/mediocr-website",
-	"GoVersion": "go1.3.1",
+	"GoVersion": "go1.3.3",
 	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/go-uuid/uuid",
+			"Comment": "null-15",
+			"Rev": "35bc42037350f0078e3c974c6ea690f1926603ab"
+		},
+		{
+			"ImportPath": "code.google.com/p/go.image/bmp",
+			"Comment": "null-45",
+			"Rev": "ecb55bf6755d151e154a780019bab0a812b3a8da"
+		},
 		{
 			"ImportPath": "code.google.com/p/go.net/html",
 			"Comment": "null-144",
 			"Rev": "ad01a6fcc8a19d3a4478c836895ffe883bd2ceab"
 		},
 		{
-			"ImportPath": "github.com/codegangsta/inject",
-			"Comment": "v1.0-rc1-4-g4b81725",
-			"Rev": "4b8172520a03fa190f427bbd284db01b459bfce7"
+			"ImportPath": "github.com/GoIncremental/negroni-sessions",
+			"Rev": "510e8e6446919523044d7890fc4315246a2de87a"
 		},
 		{
-			"ImportPath": "github.com/go-martini/martini",
-			"Comment": "v1.0-50-g7d32ea3",
-			"Rev": "7d32ea3fa6590565c928b90a48178b60b96df98f"
+			"ImportPath": "github.com/boj/redistore",
+			"Comment": "v1",
+			"Rev": "9d1554b400d726c7aa54b6e4a836f273b72b97f7"
 		},
 		{
-			"ImportPath": "github.com/martini-contrib/render",
-			"Rev": "b65063311fac6cbf84d3538f5715f7847e648322"
+			"ImportPath": "github.com/codegangsta/negroni",
+			"Comment": "v0.1-34-gae96f1c",
+			"Rev": "ae96f1c1ac9eb11be7dff4fe4cb42f6846b93d77"
 		},
 		{
-			"ImportPath": "github.com/oxtoacart/bpool",
-			"Rev": "0f78ff9152c03745d1a47c9023af1b424e202c07"
+			"ImportPath": "github.com/garyburd/redigo/redis",
+			"Rev": "779af66db5668074a96f522d9025cb0a5ef50d89"
+		},
+		{
+			"ImportPath": "github.com/goincremental/dal",
+			"Comment": "v0.2.0-8-g47d69bb",
+			"Rev": "47d69bb107047bf93d48b720bbd8ce1290b8f12e"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "14f550f51af52180c2eefed15e5fd18d63c0a64a"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Rev": "e444e69cbd2e2e3e0749a2f3c717cec491552bbf"
+		},
+		{
+			"ImportPath": "github.com/gorilla/securecookie",
+			"Rev": "f0559d009e6943011cd1ba6eb16195cf5e0ed326"
+		},
+		{
+			"ImportPath": "github.com/gorilla/sessions",
+			"Rev": "aa5e036e6c44aec69a32eb41097001978b29ad31"
 		},
 		{
 			"ImportPath": "github.com/russross/blackfriday",
 			"Comment": "v1.2-10-g44a39c1",
 			"Rev": "44a39c16c6b85809f8c2663bdb8ddbced1ffdee8"
+		},
+		{
+			"ImportPath": "gopkg.in/unrolled/render.v1",
+			"Rev": "4796b5bc747483bf9b20a50b2c80e00ed2c85fab"
+		},
+		{
+			"ImportPath": "gopkg.in/unrolled/secure.v1",
+			"Rev": "58ee46c116fcbdf68146867a936f581f0eada3d5"
+		},
+		{
+			"ImportPath": "labix.org/v2/mgo",
+			"Comment": "287",
+			"Rev": "gustavo@niemeyer.net-20140501184651-975yyw9ipld92pji"
 		}
 	]
 }
