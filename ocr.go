@@ -71,7 +71,9 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 			img, err = bmp.Decode(uploadedFileReader)
 			if err != nil {
 				redirectErrorDesc(w, r, http.StatusBadRequest, "The file you "+
-					"uploaded does not seem to be a valid image file.")
+					"uploaded does not seem to be a valid image file. The way "+
+					"your image was encoded might not be compatible with the "+
+					"libraries we use.")
 				return
 			}
 		}
