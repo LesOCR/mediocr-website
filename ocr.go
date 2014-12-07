@@ -8,6 +8,7 @@ import (
 	"image/png"
 	"net/http"
 	"os"
+	"os/exec"
 
 	"code.google.com/p/go-uuid/uuid"
 	"code.google.com/p/go.image/bmp"
@@ -73,10 +74,11 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	tmpName := "./tmp/" + uuid.NewUUID().String()
+	tmpName := "tmp/" + uuid.NewUUID().String()
 	file, err := os.Create(tmpName)
 	if err != nil {
-		fmt.Errorf("Error while creating the temporary converted file\n")
+		fmt.Errorf("Error while creating the temporary converted file: %s\n",
+			err.Error())
 		redirectError(w, r, http.StatusInternalServerError)
 		return
 	}
@@ -84,15 +86,27 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 	defer removeTmpFile(tmpName)
 	err = bmp.Encode(file, img)
 	if err != nil {
-		fmt.Errorf("Error while saving the converted image file\n")
+		fmt.Errorf("Error while saving the converted image file: %s\n",
+			err.Error())
 		redirectError(w, r, http.StatusInternalServerError)
 		return
 	}
 
-	// TODO: run the OCR
-	redirectErrorDesc(w, r, http.StatusNotImplemented, "The OCR feature has "+
-		"yet to be finished. Come back soon, it should be ready by the 8th "+
-		"december!")
+	cmd := exec.Command("./main", "-f", "../"+tmpName)
+	cmd.Dir = "mediocr"
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err = cmd.Run()
+	if err != nil {
+		fmt.Printf("OCR error: %s\n", err.Error())
+		redirectErrorDesc(w, r, http.StatusInternalServerError, "The "+
+			"underlaying OCR software has returned an inexpected result.")
+		return
+	}
+
+	getSession(r).AddFlash(out.String(), "ocr_result")
+	saveSession(w, r)
+	http.Redirect(w, r, "/try", http.StatusSeeOther)
 }
 
 func removeTmpFile(file string) {

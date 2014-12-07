@@ -37,7 +37,7 @@ func redirectErrorDesc(w http.ResponseWriter, r *http.Request, errorCode int,
 func redirectError(w http.ResponseWriter, r *http.Request, errorCode int) {
 	getSession(r).AddFlash(errorCode, "error_code")
 	saveSession(w, r)
-	http.Redirect(w, r, "/error", http.StatusTemporaryRedirect)
+	http.Redirect(w, r, "/error", http.StatusSeeOther)
 }
 
 /* Context functions */

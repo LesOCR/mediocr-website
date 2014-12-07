@@ -64,6 +64,17 @@ func renderPage(w http.ResponseWriter, r *http.Request, page string) {
 		blackfriday.EXTENSION_LAX_HTML_BLOCKS,
 	))
 
+	// OCR result display (after the Markdown rendering, to add some HTML)
+	ocrResult := ""
+	if fl := getSession(r).Flashes("ocr_result"); len(fl) > 0 {
+		ocrResult = fl[0].(string)
+		ocrResultSplit := strings.Split(ocrResult, "\n")
+		ocrResult = strings.Join(ocrResultSplit[1:len(ocrResultSplit)], "<br />")
+		ocrResult = "Text recognised by our OCR:<br /><br />" + ocrResult
+	}
+	pageContents = strings.Replace(pageContents, "{{.OCR_RESULT}}", ocrResult,
+		-1)
+
 	saveSession(w, r)
 
 	getRender(w, r).HTML(w, statusCode, "index", map[string]interface{}{

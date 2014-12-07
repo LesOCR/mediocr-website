@@ -6,3 +6,6 @@ However, you can upload a file here and we will do our best to parse it, so you 
 	<input type="file" name="file" />
 	<a href="#" onclick="document.forms[0].submit()">Submit</a>
 </form>
+<br />
+
+{{.OCR_RESULT}}
