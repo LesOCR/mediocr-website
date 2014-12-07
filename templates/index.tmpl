@@ -5,16 +5,16 @@
   <meta name="viewport" content="initial-scale=1.0">
   <title>MediOCR - {{.title}}</title>
   <link href="//fonts.googleapis.com/css?family=Merriweather:300,inherit|Merriweather+Sans:300,inherit,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/standardize.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="//{{.host}}/css/standardize.css">
+  <link rel="stylesheet" href="//{{.host}}/css/index.css">
 </head>
 <body class="body index clearfix">
-  <img class="logo_highlight js-logo_highlight" src="images/mediocr_highlight.png">
-  <img class="logo" src="images/mediocr_off.png">
+  <img class="logo_highlight js-logo_highlight" src="//{{.host}}/images/mediocr_highlight.png">
+  <img class="logo" src="//{{.host}}/images/mediocr_off.png">
   <div class="menubar clearfix">
-    <a class="menu-element home{{ if eq .title "Home" }} selected{{end}}" href="/">home</a>
-    <a href="try" class="menu-element try{{ if eq .title "Try" }} selected{{end}}">try</a>
-    <a href="about" class="menu-element about{{ if eq .title "About" }} selected{{end}}">about</a>
+    <a href="//{{.host}}/" class="menu-element home{{ if eq .title "Home" }} selected{{end}}">home</a>
+    <a href="//{{.host}}/try" class="menu-element try{{ if eq .title "Try" }} selected{{end}}">try</a>
+    <a href="//{{.host}}/about" class="menu-element about{{ if eq .title "About" }} selected{{end}}">about</a>
   </div>
   <div class="contents">
     {{.contents}}
@@ -23,7 +23,7 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/instantclick/3.0.1/instantclick.min.js"></script>
   <script data-no-instant>InstantClick.init();</script>
-  <script src="js/jquery-min.js" data-no-instant></script>
-  <script src="js/index.js"></script>
+  <script src="//{{.host}}/js/jquery-min.js" data-no-instant></script>
+  <script src="//{{.host}}/js/index.js"></script>
 </body>
 </html>
